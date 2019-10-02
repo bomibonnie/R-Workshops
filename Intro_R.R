@@ -2,7 +2,7 @@
 #  Name:   Introduction to R.R                                   #
 #  Date:   October 2, 2019                                       #
 #  Author: Bomi Lee                                              #
-#  Purpose: Introduction to R for first time users.              #
+#  Purpose: Introduction to R for first time users               #
 #  Thanks to Desmond D. Wallace, Jielu Yao, and                  #
 #  Elizabeth Menninga for some of this code.                     #
 ##################################################################
