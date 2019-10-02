@@ -58,11 +58,10 @@ is.character(numeric1)
 is.logical(numeric1)
 
 ## Data type coercion: as.characer() | as.numeric() | as.logical()
-as.character(my_numeric1)
-class(my_numeric1) # R does not update automatically
-new_numeric1 <- as.character(my_numeric1)
+as.character(numeric1)
+class(numeric1) # R does not update automatically
+new_numeric1 <- as.character(numeric1)
 class(new_numeric1)
-
 
 # Creating Objects
 
@@ -71,6 +70,8 @@ class(new_numeric1)
 mymat <- matrix(-8:7,
                 nrow = 4,
                 ncol = 4)
+mymat # View object in R console
+View(mymat) # View object in RStudio
 
 mymat2 <- matrix(0,
                  nrow = 4,
@@ -82,19 +83,13 @@ mymat3 <- matrix(1:4,
                  ncol = 4)
 mymat3
 
-mymat # View object in R console
-
 mymat[2,
       3] # Report single maxtrix element
 
-View(mymat) # View object in RStudio
-
-View(mymat[2,
-           3])
-
 ## Vector
 c() 
-### Class Numeric
+
+### Numeric
 
 A <- c(1,
        2,
@@ -105,12 +100,12 @@ A[3]
 
 B <- c(1.5,
        -2.34,
-       NA) # Double
+       NA) 
 B
 is.na(B)
 
-?ifelse
 B2 <- ifelse(is.na(B)==TRUE, 0, B)
+?ifelse
 B2
 
 B3 <- B[-3]
@@ -120,7 +115,7 @@ B3
 
 C <- c("R is hard.",
        "But I can learn.")
-
+C
 
 ## Logical
 
@@ -146,26 +141,18 @@ View(ex.dataframe)
 exData <- mtcars # Example dataset already installed
 View(exData)
 
-varnames<-names(mtcars)
-varnames
+names(mtcars)
 
 mtcars_mpg <- mtcars$mpg
 mtcars_mpg
 
 View(mtcars$mpg)
 
-## Array
-
-array(-9:8,
-      dim = c(3,
-              3,
-              2))
-
 ## List
 
-song <- list(c("yesterday", "fake love"),
-             c(190, 242),
-             c(5, 1))
+song <- list("fake love",
+             242,
+             1)
 names(song) <- c("title", "duration", "track") # name a list
 song
 
@@ -180,7 +167,7 @@ ls()
 
 ### To remove the objects
 
-rm(A)
+rm(C)
 
 ls()
 

@@ -41,6 +41,7 @@ rm(exData2, ex.readcsv)
 View(exData)
 names(exData)
 head(exData)
+summary(exData)
 
 ## select - select variables
 
@@ -48,7 +49,7 @@ head(exData)
 
 exData_gdp <- exData %>%
                 select("country", "year", "gdpPercap")
-
+head(exData_gdp)
 View(exData_gdp)
 
 #exData_gdp2 <- exData[,c(1,3,6)]
@@ -146,6 +147,7 @@ exDataAB <- bind_cols(exData %>%
                       exData %>%
                         filter(year == 2002) %>%
                         select(year))
+View(exDataAB)
 
 ## join functions - Join two tbls together
 
