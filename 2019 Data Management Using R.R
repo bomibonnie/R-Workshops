@@ -28,14 +28,13 @@ export(exData,
 convert(in_file = "./gapminder.csv",
         out_file = "./gapminder.dta")
 
-?convert
-
 exData2 <- import(file = "./gapminder.dta")
 
 ex.readcsv <- read.csv("gapminder.csv")
 #library(haven)
 #ex.readdta <- read_dta("gapminder.dta")
 rm(exData2, ex.readcsv)
+
 
 # Data Manipulation
 
@@ -54,8 +53,12 @@ View(exData_gdp)
 
 #exData_gdp2 <- exData[,c(1,3,6)]
 #View(exData_gdp2)
-#exData_gdp3 <- exData[,c("country", "year", "gdpPercap")]
+
+#exData_gdp3 <- exData[,-c(2,4,5)]
 #View(exData_gdp3)
+
+#exData_gdp4 <- exData[,c("country", "year", "gdpPercap")]
+#View(exData_gdp4)
 
 
 ## arrange - Arrange rows by variables
@@ -199,4 +202,3 @@ unemp_kor_q <- unemp %>%
 
 View(unemp_kor_q)
 export(unemp_kor_q, "kor_unemp_q.csv")
-

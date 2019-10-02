@@ -112,6 +112,9 @@ is.na(B)
 B2 <- ifelse(is.na(B)==TRUE, 0, B)
 B2
 
+B3 <- B[-3]
+B3
+
 ## Character
 
 C <- c("R is hard.",
@@ -166,6 +169,7 @@ names(song) <- c("title", "duration", "track") # name a list
 song
 
 song[1]
+song[3]
 song[[2]]
 song[[3]][1]
 
