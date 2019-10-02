@@ -182,7 +182,9 @@ unemp_kor_m <- unemp %>%
 head(unemp_kor_m)
 
 export(unemp_kor_m, "kor_unemp_m.csv")
+write.csv(unemp_kor_m, "kor_unemp_m2.csv", row.names = FALSE, na = "")
 
+## Quarterly
 unemp_kor_q <- unemp %>%
   filter(LOCATION=="KOR") %>%
   separate(TIME, c("year", "month"), sep = "-") %>%
@@ -197,3 +199,4 @@ unemp_kor_q <- unemp %>%
 
 View(unemp_kor_q)
 export(unemp_kor_q, "kor_unemp_q.csv")
+

@@ -108,16 +108,17 @@ B <- c(1.5,
 B
 is.na(B)
 
+?ifelse
 B2 <- ifelse(is.na(B)==TRUE, 0, B)
 B2
 
-# Class Character
+## Character
 
 C <- c("R is hard.",
        "But I can learn.")
 
 
-# Class Logical
+## Logical
 
 D <- c(TRUE,
        TRUE)
@@ -125,10 +126,18 @@ D <- c(TRUE,
 ex.cbind <- cbind(C, D)
 ex.rbind <- rbind(C, D)
 
+class(ex.cbind)
+class(ex.rbind)
+
 ex.cbind
 ex.rbind
 
-# Class Data Frame
+## Data Frame
+
+ex.dataframe <- data.frame(C, D)
+
+class(ex.dataframe)
+View(ex.dataframe)
 
 exData <- mtcars # Example dataset already installed
 View(exData)
@@ -141,14 +150,14 @@ mtcars_mpg
 
 View(mtcars$mpg)
 
-# Class Array
+## Array
 
 array(-9:8,
       dim = c(3,
               3,
               2))
 
-# Class List
+## List
 
 song <- list(c("yesterday", "fake love"),
              c(190, 242),
@@ -160,17 +169,17 @@ song[1]
 song[[2]]
 song[[3]][1]
 
-## To list the objects you created
+### To list the objects you created
 
 ls()
 
-## To remove the objects
+### To remove the objects
 
 rm(A)
 
 ls()
 
-## To remove all objects
+### To remove all objects
 
 rm(list=ls(all=TRUE))
 
