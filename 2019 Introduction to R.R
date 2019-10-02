@@ -29,6 +29,7 @@ setwd("C:/Users/bomim/Documents/Rworkshop")
 ### install.packages('package name')
 
 ## GitHub
+
 ### devtools::install_github
 
 ## Load packages
