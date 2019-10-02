@@ -16,7 +16,6 @@ library("gapminder")
 library("tidyverse")
 
 
-
 # Load gapminder data
 
 exData <- gapminder
@@ -66,6 +65,18 @@ View(exData_gdp)
 arrange(exData,
         desc(pop))
 
+which.max(exData$pop)
+exData[300,]
+
+### Which countries have the smallest populations?
+
+arrange(exData,
+        (pop))
+
+which.min(exData$pop)
+exData[1297,]
+
+
 ## filter - Return rows with matching conditions
 
 ### Which countries had the largest population in 2007?
@@ -82,6 +93,7 @@ exData %>%
   filter(year == 2007) %>%
   arrange(desc(lifeExp)) %>%
   select(country, lifeExp)
+
 
 ## mutate/transmute - Add new variables
 
