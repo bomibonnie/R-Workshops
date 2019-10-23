@@ -26,17 +26,25 @@ View(edge)
 
 ?network
 net<-network(edge, matrix.type="edgelist")
+#matrix.type="adjacency"
+
 net
+class(net)
 
 windows()
-plot(net,displaylabels=T)
+plot(net, displaylabels=T)
 
 net[,]
 
 ### Weights
-netweighted<-network(edge,matrix.type="edgelist",
+netweighted<-network(edge, 
+                     matrix.type="edgelist",
                      ignore.eval=F,
                      names.eval="weight")
+
+#ignore.eval: logical; ignore edge values?
+#names.eval: optionally, the name of the attribute in which edge values should be stored
+  
 windows()
 plot(netweighted,
      displaylabels=T,
@@ -44,6 +52,8 @@ plot(netweighted,
 
 netweighted[,] #adjacency matrix without weight
 as.sociomatrix.sna(netweighted,"weight")
+#as.sociomatrix: Coerce One or More Networks to Sociomatrix Form
+
 netweighted %e% "weight"
 
 ### Attribute data
@@ -62,6 +72,8 @@ library(igraph)
 
 node <- import("nodeList.csv")
 net_igraph<-graph_from_data_frame(d=edge, v=node, directed=T)
+# build an igraph object from the above matrix
+class(net_igraph)
 
 V(net_igraph)$gender <- c("M","F","F","M","M","M")
 V(net_igraph)$gender
@@ -91,6 +103,7 @@ head(atop)
 atop2002_dat <-subset(atop, year==2002, c(stateabb1, stateabb2))
 atop2002 <- graph.data.frame(atop2002_dat)
 # no isolates
+?graph.data.frame
 atop2002g <- as.undirected(atop2002, mode='collapse')
 
 windows()
@@ -115,11 +128,12 @@ plot(atop2002g,
 # Calculate Network Statistics
 
 ## Centrality
-
 ### Degree - Number of adjacent ties for a node
 ?degree
 
 degree(atop2002g)
+which.max(degree(atop2002g))
+degree(atop2002g)[113]
 
 degree(net_igraph,
        mode = "in")
@@ -153,7 +167,6 @@ cent_df$state <- rownames(cent_df)
 View(cent_df)
 
 ## Dyad
-
 windows()
 plot(net_igraph)
 summary(net_igraph)
