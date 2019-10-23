@@ -52,13 +52,13 @@ exData_gdp <- exData %>%
 head(exData_gdp)
 View(exData_gdp)
 
-#exData_gdp2 <- exData[,c(1,3,6)]
-#View(exData_gdp2)
+exData_gdp2 <- exData[,c(1,3,6)]
+View(exData_gdp2)
 
 #exData_gdp3 <- exData[,-c(2,4,5)]
 #View(exData_gdp3)
 
-#exData_gdp4 <- exData[,c("country", "year", "gdpPercap")]
+exData_gdp4 <- exData[-1,c("country", "year", "gdpPercap")]
 #View(exData_gdp4)
 
 
