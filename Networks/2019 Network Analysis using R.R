@@ -10,41 +10,43 @@
 # Install and load needed packages
 
 #install.packages("statnet")
-#install.packages("ergm")
+#install.packages("igraph")
 library(statnet)
 library(rio)
-library(ergm)
 
 # Set Working Directory
 getwd()
-## setwd("C:/Users/bomim/Documents/Rworkshop")
+#setwd("C:/Users/bomim/Documents/Rworkshop/Networks")
 
 # Load and plot data
-##statnet
+## statnet
 edge <- import("edgeList.csv")
 head(edge)
 View(edge)
 
-net<-network(edge,matrix.type="edgelist")
+?network
+net<-network(edge, matrix.type="edgelist")
 net
 
 windows()
 plot(net,displaylabels=T)
 
-###weights
+net[,]
+
+### Weights
 netweighted<-network(edge,matrix.type="edgelist",
                      ignore.eval=F,
                      names.eval="weight")
 windows()
 plot(netweighted,
      displaylabels=T,
-     edge.lwd=5*netweighted%e%"weight")
+     edge.lwd=3*netweighted%e%"weight")
 
 netweighted[,] #adjacency matrix without weight
 as.sociomatrix.sna(netweighted,"weight")
 netweighted %e% "weight"
 
-###attribute data
+### Attribute data
 netweighted %v% "gender"<-c("M","F","F","M","M","M")
 netweighted %v% "gender"
 
@@ -55,7 +57,7 @@ netweighted %v% "age" #what happened?
 
 netweighted
 
-##igraph
+## igraph
 library(igraph)
 
 node <- import("nodeList.csv")
@@ -88,6 +90,7 @@ atop <- import("atop_sample.csv")
 head(atop)
 atop2002_dat <-subset(atop, year==2002, c(stateabb1, stateabb2))
 atop2002 <- graph.data.frame(atop2002_dat)
+# no isolates
 atop2002g <- as.undirected(atop2002, mode='collapse')
 
 windows()
@@ -97,11 +100,6 @@ plot(atop2002g,
      vertex.frame.color="black", 
      vertex.color="blue",
      layout=layout.fruchterman.reingold)
-##Appropriate for unweighted, undirected graphs. Ignores edge weights
-#Attractive forces occur between adjacent vertices only, 
-#whereas repulsive forces occur between every pair of vertices. 
-#Each iteration computes the sum of the forces on each vertex, 
-#then moves the vertices to their new positions.
 
 windows()
 plot(atop2002g,
@@ -110,11 +108,6 @@ plot(atop2002g,
      vertex.frame.color="black", 
      vertex.color="blue",
      layout=layout.kamada.kawai)
-
-##kamada.kawai algorithm requires the graph to be connected 
-#(only one component and no isolates) 
-#Uses distance between nodes to determine where they should go. 
-#The shorter the distance between nodes the closer they are.
 
 ### https://igraph.org/r/doc/
 
@@ -125,7 +118,7 @@ plot(atop2002g,
 
 ### Degree - Number of adjacent ties for a node
 ?degree
-atop2002g
+
 degree(atop2002g)
 
 degree(net_igraph,
@@ -143,14 +136,41 @@ eigen_centrality(atop2002g)$vector
 
 ### Betweenness
 betweenness(net_igraph)
-betweenness(atop2002g)
+#betweenness(atop2002g)
 
 ### Closeness
 closeness(net_igraph)
 #closeness(atop2002g)
 
-state <- V(atop2002g)
+## Into a Dataset
 degree <- degree(atop2002g)
 eigen <- eigen_centrality(atop2002g)$vector
 
-cent_data <- data.frame(state, degree, eigen)  
+cent_mat <- cbind(degree, eigen)
+cent_df <- data.frame(cent_mat)
+cent_df$state <- rownames(cent_df)
+
+View(cent_df)
+
+## Dyad
+
+windows()
+plot(net_igraph)
+summary(net_igraph)
+
+?dyad.census
+#mut: The number of pairs with mutual connections.
+#asym: The number of pairs with non-mutual connections.
+#null: The number of pairs with no connection between them.
+
+dyad.census(net_igraph)
+
+## Triads
+?triad.census
+triad.census(net_igraph)
+
+### Using statnet
+summary(net ~ edges)
+
+atopnet<-network(atop2002_dat, matrix.type="edgelist")
+summary(atopnet ~ triangles)
