@@ -3,7 +3,7 @@
 #  Date:   February 19, 2020                                     #
 #  Author: Bomi Lee                                              #
 #  Purpose: Basic data managmement for first time users          #
-#  Thanks to Desmond D. Wallace for some of this code.           #          #
+#  Thanks to Desmond D. Wallace for some of this code.           #          
 ##################################################################
 
 # Install and load needed packages
