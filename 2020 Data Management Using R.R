@@ -31,8 +31,7 @@ convert(in_file = "./gapminder.csv",
 exData2 <- import(file = "./gapminder.dta")
 
 ex.readcsv <- read.csv("gapminder.csv")
-#library(haven)
-#ex.readdta <- read_dta("gapminder.dta")
+
 rm(exData2, ex.readcsv)
 
 
@@ -137,6 +136,7 @@ exData0207 <- bind_rows(exData %>%
                         exData %>%
                           filter(year == 2007))
 
+view(exData0207)
 
 ### bind_cols - Appends objects horizontally
 
@@ -147,7 +147,7 @@ exDataAB <- bind_cols(exData %>%
                       exData %>%
                         filter(year == 2002) %>%
                         select(year))
-View(exDataAB)
+view(exDataAB)
 
 ## join functions - Join two tbls together
 

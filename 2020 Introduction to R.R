@@ -50,7 +50,9 @@ character <- "hello" # characters
 ## Identify data type
 class(logical)
 class(numeric2)
+
 str(numeric2) # display the structure of an object
+str(character)
 
 ## Check data type
 is.numeric(numeric1)
@@ -63,11 +65,13 @@ class(numeric1) # R does not update automatically
 new_numeric1 <- as.character(numeric1)
 class(new_numeric1)
 
-?as.numeric
 
 # Creating Objects
 
 ## Matrix
+?matrix
+x <- matrix()
+x
 
 mymat <- matrix(-8:7,
                 nrow = 4,
@@ -89,8 +93,9 @@ mymat3
 mymat[2,
       3] # Report single maxtrix element
 mymat
+
 ## Vector
-c() 
+?c() 
 
 ### Numeric
 
@@ -105,14 +110,13 @@ B <- c(1.5,
        -2.34,
        NA) 
 B
-is.na(B)
+is.na(B) #Missing values?
 
 B2 <- ifelse(is.na(B)==TRUE, 0, B)
 ?ifelse
 B2
 
-
-B3 <- B[-1]
+B3 <- B[-1] #Delete the first element
 B3
 
 ## Character
@@ -120,6 +124,7 @@ B3
 C <- c("R is hard.",
        "But I can learn.")
 C
+C[2]
 
 ## Logical
 
@@ -131,11 +136,11 @@ D
 ex.cbind <- cbind(C, D)
 ex.rbind <- rbind(C, D)
 
-class(ex.cbind)
-class(ex.rbind)
-
 ex.cbind
 ex.rbind
+
+class(ex.cbind)
+class(ex.rbind)
 
 ## Data Frame
 
@@ -145,6 +150,7 @@ class(ex.dataframe)
 View(ex.dataframe)
 names(ex.dataframe)
 
+?mtcars
 exData <- mtcars # Example dataset already installed
 View(exData)
 
@@ -156,17 +162,19 @@ mtcars_mpg
 View(mtcars$mpg)
 
 ## List
+c("yesterday", 190, 5)
 
-song <- list("fake love",
-             242,
-             c(1,2))
+song <- list(c("fake love", "yesterday"),
+             c(242, 190),
+             c(2, 5))
 names(song) <- c("title", "duration", "track") # name a list
 song
 
 song[1]
-song[3]
+song[2]
+
 song[[2]]
-song[[3]][1]
+song[[2]][1]
 
 ### To list the objects you created
 
