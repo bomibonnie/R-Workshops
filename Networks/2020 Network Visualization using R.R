@@ -71,7 +71,7 @@ netweighted %v% "color"
 windows()
 plot(netweighted,
      displaylabels=F,
-     edge.lwd=3*netweighted%e%"weight",
+     edge.lwd=2*netweighted%e%"weight",
      vertex.cex=netweighted%v%"age",
      vertex.col=netweighted%v%"color")
 
