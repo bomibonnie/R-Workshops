@@ -10,6 +10,7 @@
 
 #install.packages("statnet")
 #install.packages("igraph")
+#install.packages("rio")
 library(statnet)
 library(rio)
 
