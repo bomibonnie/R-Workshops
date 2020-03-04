@@ -55,7 +55,7 @@ as.sociomatrix.sna(netweighted,"weight")
 netweighted
 netweighted %e% "weight"
 
-### Attribute data
+### Node attributes
 netweighted %v% "gender"<-c("M","F","F","M","M","M")
 netweighted %v% "gender"
 
@@ -135,7 +135,7 @@ plot(atop1997g,
      vertex.color="white",
      layout=layout.fruchterman.reingold)
 
-## Sub-network
+## Create sub-networks
 E(atop1997g)
 V(atop1997g)
 
